@@ -1,0 +1,78 @@
+<resources>
+    <string name="app_name">Lost Ark Daily</string>
+    <string name="titulo_dados_personagem">Character information</string>
+
+    <string name="personagem_nome">Nome</string>
+    <string name="persoangem_ilvl">Item level</string>
+    <string name="personagem_main">Main character</string>
+    <string name="personagem_main_bool_true">Is main</string>
+    <string name="personagem_main_bool_false">Is not main</string>
+    <string name="personagem_classe">Class</string>
+
+    <string name="tier_1" translatable="false">Tier 1</string>
+    <string name="tier_2" translatable="false">Tier 2</string>
+    <string name="tier_3" translatable="false">Tier 3</string>
+
+    <string name="berserker" translatable="false">Berserker</string>
+    <string name="paladin" translatable="false">Paladin</string>
+    <string name="gunlancer" translatable="false">Gunlancer</string>
+    <string name="glaivier" translatable="false">Glaivier</string>
+    <string name="striker" translatable="false">Striker</string>
+    <string name="wardancer" translatable="false">Wardancer</string>
+    <string name="scrapper" translatable="false">Scrapper</string>
+    <string name="soulfist" translatable="false">Soulfist</string>
+    <string name="gunslinger" translatable="false">Gunslinger</string>
+    <string name="artillerist" translatable="false">Artillerist</string>
+    <string name="deadeye" translatable="false">Deadeye</string>
+    <string name="sharpshooter" translatable="false">Sharpshooter</string>
+    <string name="bard" translatable="false">Bard</string>
+    <string name="sorceress" translatable="false">Sorceress</string>
+    <string name="shadowhunter" translatable="false">Shadowhunter</string>
+    <string name="deathblade" translatable="false">Deathblade</string>
+
+
+    <string name="hint_nome">Insert Character name</string>
+
+    <string name="btn_salvar">Save</string>
+    <string name="btn_limpar">Clear</string>
+
+    <string name="erro_nome">Character name is empty!</string>
+    <string name="erro_ilvl">Item level of character is empty!</string>
+    <string name="erro_classe">Please choose a class for you character</string>
+    <string name="erro_tier">Please select a tier to your character</string>
+
+    <string name="msg_limpar">Fields have been reset</string>;
+
+    <string name="battlemage" translatable="false">Battlemage</string>
+    <string name="stronkman" translatable="false">Stronkman</string>
+    <string name="superhealer" translatable="false">Superhealer</string>
+    <string name="lucaskun" translatable="false">Lucaskun</string>
+    <string name="antonietta" translatable="false">Antonietta</string>
+    <string name="surfists" translatable="false">surfists</string>
+    <string name="traveler" translatable="false">traVeler</string>
+    <string name="sorcgodess" translatable="false">sorcGoddess</string>
+    <string name="lancer" translatable="false">Lancer</string>
+    <string name="fightme" translatable="false">Fightme</string>
+
+    <string name="nome_aluno">Author: Lucas Malheiros</string>
+    <string name="utfpr">Technological Federal University of the Parana State</string>
+    <string name="email_aluno" translatable="false">E-mail: lucmalheiros@gmail.com</string>
+    <string name="descricao_aplicativo">Controle de farm para personagens de Lost Ark. Adicione os dados de seus personagens e utilize o aplicativo para gerenciar quais atividades diárias e semanais foram completadas.</string>
+    <string name="curso_aluno">Major: Software Engineering</string>
+    <string name="listaPersonagens">Character list</string>
+    <string name="main" translatable="false">Main</string>
+    <string name="nome">"Name: "</string>
+    <string name="itemLevel">"Item level: "</string>
+    <string name="classeDoPersonagem">"Class of character:  "</string>
+    <string name="salvar">Save</string>
+    <string name="limpar">Clear</string>
+    <string name="editar">Edit</string>
+    <string name="excluir">Remove</string>
+    <string name="adicionar">Add</string>
+    <string name="sobre">About the developer</string>
+    <string name="personagem_tier">Tier of character</string>
+    <string name="descricaoLogoUTF">UTFPR\'s logo</string>
+    <string name="menu_alfabetico">Alphabetical order</string>
+    <string name="menu_level">Order by item level</string>
+
+</resources>

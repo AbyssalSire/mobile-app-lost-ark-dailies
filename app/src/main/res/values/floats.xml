@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="trezentos_e_dois_ponto_zero" translatable="false">302.0</string>
+    <string name="trezentos_e_vinte_seis_ponto_vinte_e_vinco" translatable="false">326.25</string>
+    <string name="quatrocentos_e_dez_ponto_zero" translatable="false">410.0</string>
+    <string name="quinhentos_e_um_ponto_cinquenta" translatable="false">501.50</string>
+    <string name="seiscentos" translatable="false">600.0</string>
+    <string name="seiscentos_e_um_ponto_setenta_e_cinco" translatable="false">601.75</string>
+    <string name="seiscentos_e_sessenta_e_nove_ponto_setenta_e_cinco" translatable="false">669.75</string>
+    <string name="setecentos_e_cinquenta_ponto_seis" translatable="false">750.6</string>
+    <string name="oitocentos_e_vinte_ponto_trinta" translatable="false">820.3</string>
+    <string name="mil_e_dez_ponto_zero" translatable="false">1010.0</string>
+    <string name="mil_quatrocentos_e_noventa_ponto_dez" translatable="false">1490.1</string>
+    <string name="mil_trezentos_e_setenta_ponto_noventa" translatable="false">1370.90</string>
+</resources>

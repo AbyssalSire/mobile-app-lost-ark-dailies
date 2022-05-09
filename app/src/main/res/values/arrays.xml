@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nomes_personagens">
+        <item>@string/battlemage</item>
+        <item>@string/stronkman</item>
+        <item>@string/fightme</item>
+        <item>@string/superhealer</item>
+        <item>@string/antonietta</item>
+        <item>@string/surfists</item>
+        <item>@string/traveler</item>
+        <item>@string/sorcgodess</item>
+        <item>@string/lancer</item>
+        <item>@string/lucaskun</item>
+    </string-array>
+
+    <string-array name="ilvl_personagens">
+        <item>302.0</item>
+        <item>326.25</item>
+        <item>410.0</item>
+        <item>5001.50</item>
+        <item>600</item>
+        <item>750.6</item>
+        <item>820.30</item>
+        <item>1010.0</item>
+        <item>1490.1</item>
+        <item>1370.90</item>
+    </string-array>
+
+    <string-array name="main_personagens">
+        <item>false</item>
+        <item>false</item>
+        <item>false</item>
+        <item>false</item>
+        <item>false</item>
+        <item>false</item>
+        <item>false</item>
+        <item>false</item>
+        <item>true</item>
+        <item>false</item>
+    </string-array>
+
+    <string-array name="tiers_personagens">
+        <item>@string/tier_1</item>
+        <item>@string/tier_1</item>
+        <item>@string/tier_1</item>
+        <item>@string/tier_2</item>
+        <item>@string/tier_2</item>
+        <item>@string/tier_2</item>
+        <item>@string/tier_2</item>
+        <item>@string/tier_2</item>
+        <item>@string/tier_3</item>
+        <item>@string/tier_3</item>
+    </string-array>
+
+    <string-array name="classe_personagens">
+        <item>@string/berserker</item>
+        <item>@string/artillerist</item>
+        <item>@string/shadowhunter</item>
+        <item>@string/deadeye</item>
+        <item>@string/sorceress</item>
+        <item>@string/bard</item>
+        <item>@string/striker</item>
+        <item>@string/wardancer</item>
+        <item>@string/glaivier</item>
+        <item>@string/soulfist</item>
+    </string-array>
+
+
+</resources>

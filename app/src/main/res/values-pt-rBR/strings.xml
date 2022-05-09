@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Diárias do Lost Ark</string>
+    <string name="titulo_dados_personagem">Dados do seu personagem</string>
+    <string name="personagem_nome">Nome</string>
+    <string name="persoangem_ilvl">Nível de item</string>
+    <string name="personagem_main">Personagem é meu main</string>
+    <string name="personagem_main_bool_true">Personagem é main</string>
+    <string name="personagem_main_bool_false">Personagem não é main</string>
+    <string name="personagem_tier">Tier do personagem</string>
+    <string name="personagem_classe">Classe</string>
+    <string name="hint_nome">Insira o nome do personagem</string>
+    <string name="btn_salvar">Salvar</string>
+    <string name="btn_limpar">Limpar</string>
+    <string name="erro_nome">Nome do personagem está vazio!</string>
+    <string name="erro_ilvl">Nível de item do personagem está vazio!</string>
+    <string name="erro_classe">Selecione uma classe para seu personagem!</string>
+    <string name="erro_tier">Selecione um tier para seu personagem!</string>
+    <string name="msg_limpar">Campos foram limpos</string>
+    <string name="nome_aluno">Autor: Lucas Malheiros</string>
+    <string name="utfpr">Universidade Técnilógica Federal do Paraná</string>
+    <string name="descricao_aplicativo">Controle de farm para personagens de Lost Ark. Adicione os dados de seus personagens e utilize o aplicativo para gerenciar quais atividades diárias e semanais foram completadas.</string>
+    <string name="curso_aluno">Curso: Engenharia de Software</string>
+    <string name="descricaoLogoUTF">Logo da Universidade Técnológica Federal do Paraná</string>
+    <string name="listaPersonagens">Lista de Personagens</string>
+    <string name="nome">"Nome: "</string>
+    <string name="itemLevel">"Nível de itens: "</string>
+    <string name="classeDoPersonagem">"Classe do Personagem: "</string>
+    <string name="salvar">Salvar</string>
+    <string name="limpar">Limpar</string>
+    <string name="editar">Editar</string>
+    <string name="excluir">Excluir</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="sobre">Sobre o desenvolvedor</string>
+    <string name="menu_alfabetico">Ordem alfabética</string>
+    <string name="menu_level">Ordernar por nível</string>
+</resources>

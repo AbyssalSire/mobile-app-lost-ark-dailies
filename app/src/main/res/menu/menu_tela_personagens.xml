@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuItemAdicionar"
+        android:icon="@android:drawable/ic_menu_add"
+        android:onClick="adicionarPersonagem"
+        android:title="@string/adicionar"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menuItemSobre"
+        android:onClick="sobre"
+        android:title="@string/sobre" />
+    <item
+        android:id="@+id/menu_alfabetico"
+        android:onClick="OrdernaAlfabetica"
+        android:title="@string/menu_alfabetico" />
+    <item
+        android:id="@+id/menu_level"
+        android:onClick="OrdenaNivel"
+        android:title="@string/menu_level" />
+</menu>
