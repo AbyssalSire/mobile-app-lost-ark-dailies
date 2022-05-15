@@ -1,12 +1,16 @@
-package lucas.malheiros.lostarkdaily;
+package lucas.malheiros.lostarkdaily.modelo;
 
 public class Personagem {
 
+    private int id;
     private String nome;
     private Float ilvl;
     private boolean main;
     private String tier;
     private String classe;
+
+    public Personagem() {
+    }
 
     public Personagem(String nome, Float ilvl, boolean main, String tier, String classe){
         this.nome = nome;
@@ -14,6 +18,14 @@ public class Personagem {
         this.main = main;
         this.tier = tier;
         this.classe = classe;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome(){

@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -19,10 +20,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+import lucas.malheiros.lostarkdaily.modelo.Personagem;
 
 public class TelaPersonagensActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -58,6 +60,8 @@ public class TelaPersonagensActivity extends AppCompatActivity {
                         posicaoSelecionada = posicao;
                         Personagem personagem = lista_personagens.get(posicao);
                         editarPersonagem((MenuItem) viewSelecionada, posicao);
+
+                        Toast.makeText(getApplicationContext(), "teste", Toast.LENGTH_LONG);
                     }
 
                     @Override
@@ -65,6 +69,7 @@ public class TelaPersonagensActivity extends AppCompatActivity {
 
                         Personagem personagem = lista_personagens.get(posicao);
                         posicaoSelecionada = posicao;
+
 
 
                     }
