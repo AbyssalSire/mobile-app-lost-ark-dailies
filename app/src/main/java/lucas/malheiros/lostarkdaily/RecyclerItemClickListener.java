@@ -1,12 +1,9 @@
 package lucas.malheiros.lostarkdaily;
 
 import android.content.Context;
-import android.os.Debug;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,8 +32,7 @@ public class RecyclerItemClickListener extends RecyclerView.SimpleOnItemTouchLis
                         View filho = recyclerView.findChildViewUnder(e.getX(), e.getY());
 
                         if (filho != null && listenerOnItemClick != null) {
-
-                            Log.d("MENSAGEM",String.valueOf(recyclerView.getChildAdapterPosition(filho)));
+                            listenerOnItemClick.onItemClick(filho, recyclerView.getChildAdapterPosition(filho));
                             return true;
                         }
                         return false;
@@ -48,7 +44,6 @@ public class RecyclerItemClickListener extends RecyclerView.SimpleOnItemTouchLis
                         if (filho != null && listenerOnItemClick != null) {
                             listenerOnItemClick.onLongItemClick(filho, recyclerView.getChildAdapterPosition(filho));
                         }
-
 
 
                     }

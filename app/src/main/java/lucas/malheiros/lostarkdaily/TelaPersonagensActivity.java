@@ -20,11 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import lucas.malheiros.lostarkdaily.modelo.Personagem;
 
 public class TelaPersonagensActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -58,18 +57,13 @@ public class TelaPersonagensActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(View view, int posicao) {
                         posicaoSelecionada = posicao;
-                        Personagem personagem = lista_personagens.get(posicao);
                         editarPersonagem((MenuItem) viewSelecionada, posicao);
-
-                        Toast.makeText(getApplicationContext(), "teste", Toast.LENGTH_LONG);
                     }
 
                     @Override
                     public void onLongItemClick(View view, int posicao) {
 
-                        Personagem personagem = lista_personagens.get(posicao);
                         posicaoSelecionada = posicao;
-
 
 
                     }
@@ -97,11 +91,9 @@ public class TelaPersonagensActivity extends AppCompatActivity {
     public boolean onContextItemSelected(MenuItem item) {
 
 
-        posicaoSelecionada = ((PersonagemAdapter) recyclerView.getAdapter()).getPosition();
-
         switch (item.getItemId()) {
             case R.id.menuItemExcluir:
-                excluirPersonagem();
+                excluirPersonagem(posicaoSelecionada);
                 break;
             case R.id.menuItemEditar:
                 editarPersonagem(item, posicaoSelecionada);
@@ -226,54 +218,10 @@ public class TelaPersonagensActivity extends AppCompatActivity {
         }
     }
 
-    //por algum motivo não funcionou, portanto usei apenas um menu floating context menu ao invés de menuitem
-    private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
-        @Override
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            MenuInflater inflate = mode.getMenuInflater();
-            inflate.inflate(R.menu.menu_personagem_selecionado, menu);
-            return true;
-        }
 
-        @Override
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false;
-        }
 
-        @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.menuItemEditar:
-                    editarPersonagem(item, posicaoSelecionada);
-                    mode.finish();
-                    return true;
-
-                case R.id.menuItemExcluir:
-                    excluirPersonagem();
-                    mode.finish();
-                    return true;
-
-                default:
-                    return false;
-            }
-        }
-
-        @Override
-        public void onDestroyActionMode(ActionMode mode) {
-            if (viewSelecionada != null) {
-                viewSelecionada.setBackgroundColor(Color.TRANSPARENT);
-            }
-
-            actionMode = null;
-            viewSelecionada = null;
-
-            recyclerView.setEnabled(true);
-
-        }
-    };
-
-    public void excluirPersonagem() {
-        lista_personagens.remove(posicaoSelecionada);
+    public void excluirPersonagem(int indice) {
+        lista_personagens.remove(indice);
         mAdapter.notifyDataSetChanged();
     }
 
