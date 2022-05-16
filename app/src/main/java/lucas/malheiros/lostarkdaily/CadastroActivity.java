@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -18,6 +17,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+
+import lucas.malheiros.lostarkdaily.modelo.Personagem;
+import lucas.malheiros.lostarkdaily.persistencia.PersonagensDatabase;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -35,6 +37,10 @@ public class CadastroActivity extends AppCompatActivity {
     public static final String EHMAIN = "EHMAIN";
     public static final String TIER = "TIER";
     public static final String CLASSE = "CLASSE";
+    public static final String ID      = "ID";
+    private int    modo;
+
+    private Personagem personagem;
 
 
     public static void novoPersonagem(AppCompatActivity activity) {
@@ -48,7 +54,7 @@ public class CadastroActivity extends AppCompatActivity {
         intent.putExtra(MODO, ALTERAR);
         intent.putExtra(NOME, personagem.getNome());
         intent.putExtra(ILVL, personagem.getIlvl());
-        intent.putExtra(EHMAIN, personagem.isMain());
+        intent.putExtra(EHMAIN, personagem.getMain());
 
         intent.putExtra(TIER, personagem.getTier());
         intent.putExtra(CLASSE, personagem.getClasse());
@@ -77,14 +83,23 @@ public class CadastroActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
+
+
         if (bundle != null) {
 
-            int modo = bundle.getInt(MODO, NOVO);
+            modo = bundle.getInt(MODO, NOVO);
 
             if (modo == NOVO) {
                 setTitle("Cadastrar Personagem");
+                personagem = new Personagem("",-1f,false,"","");
             } else if (modo == ALTERAR) {
                 setTitle("Alterar Personagem");
+
+
+                PersonagensDatabase personagensDatabase = PersonagensDatabase.getDatabase(this);
+
+                personagem = personagensDatabase.personagemDAO().queryForNome(bundle.getString(NOME));
+
                 editTextNomePersonagem.setText(bundle.getString(NOME));
                 editTextIlvlPersonagem.setText(Float.toString(bundle.getFloat(ILVL)));
 
@@ -108,7 +123,7 @@ public class CadastroActivity extends AppCompatActivity {
                 }
 
                 for (int i = 0; i < lista.size(); i++) {
-                    if (lista.get(i).toString().equals(bundle.getString(CLASSE))) {
+                    if (lista.get(i).equals(bundle.getString(CLASSE))) {
                         spinnerClasse.setSelection(i);
                     }
                 }
@@ -188,36 +203,45 @@ public class CadastroActivity extends AppCompatActivity {
                 return;
         }
 
-        Intent intent = new Intent();
 
-        intent.putExtra(NOME, nomePersonagem);
-        intent.putExtra(ILVL, ilvlPersonagem);
-        intent.putExtra(EHMAIN, checkBoxMain.isChecked());
-        intent.putExtra(TIER, tier);
-        intent.putExtra(CLASSE, (String) spinnerClasse.getSelectedItem());
+        personagem.setNome(nomePersonagem);
+        personagem.setIlvl(ilvlPersonagem);
 
-        setResult(Activity.RESULT_OK, intent);
+        personagem.setMain(checkBoxMain.isChecked());
+        personagem.setTier(tier);
+        personagem.setClasse((String) spinnerClasse.getSelectedItem());
 
+        PersonagensDatabase personagensDatabase = PersonagensDatabase.getDatabase(this);
+        if (modo==NOVO) {
+
+            personagensDatabase.personagemDAO().insert(personagem);
+
+        } else if (modo == ALTERAR){
+
+            personagensDatabase.personagemDAO().update(personagem);
+        }
+
+        setResult(Activity.RESULT_OK);
         finish();
-
     }
 
-    public void alterarPersonagem(MenuItem item, Personagem personagem) {
-        String nomePersonagem = personagem.getNome();
-        String ilvlPersonagem = String.valueOf(personagem.getIlvl());
-        String tier = personagem.getTier();
-        String classe = personagem.getClasse();
 
-        Intent intent = new Intent();
+    public void alterarPersonagem(MenuItem item, Personagem personagemAlterado) {
+        String nomePersonagem = personagemAlterado.getNome();
+        String ilvlPersonagem = String.valueOf(personagemAlterado.getIlvl());
+        String tier = personagemAlterado.getTier();
+        String classe = personagemAlterado.getClasse();
 
-        intent.putExtra(MODO, ALTERAR);
-        intent.putExtra(NOME, nomePersonagem);
-        intent.putExtra(ILVL, ilvlPersonagem);
-        intent.putExtra(EHMAIN, personagem.isMain());
-        intent.putExtra(TIER, tier);
-        intent.putExtra(CLASSE, classe);
+        personagem.setNome(nomePersonagem);
+        personagem.setIlvl(Float.valueOf(ilvlPersonagem));
+        personagem.setMain(checkBoxMain.isChecked());
+        personagem.setTier(tier);
+        personagem.setClasse(classe);
 
-        setResult(Activity.RESULT_OK, intent);
+        PersonagensDatabase personagensDatabase = PersonagensDatabase.getDatabase(this);
+        personagensDatabase.personagemDAO().update(personagem);
+
+        setResult(Activity.RESULT_OK);
 
         finish();
 

@@ -4,18 +4,17 @@ import android.content.Context;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import lucas.malheiros.lostarkdaily.modelo.Personagem;
 
 public class PersonagemAdapter extends RecyclerView.Adapter<PersonagemAdapter.MyViewHolder> {
 
@@ -83,7 +82,7 @@ public class PersonagemAdapter extends RecyclerView.Adapter<PersonagemAdapter.My
         myViewHolder.textViewClasse.setText(personagem.getClasse());
         myViewHolder.textViewIlvl.setText(String.valueOf(personagem.getIlvl()));
         myViewHolder.textViewTier.setText(personagem.getTier());
-        myViewHolder.checkBoxEhMain.setChecked(personagem.isMain());
+        myViewHolder.checkBoxEhMain.setChecked(personagem.getMain());
 
 
     }

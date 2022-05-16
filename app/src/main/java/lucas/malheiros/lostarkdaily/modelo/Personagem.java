@@ -1,16 +1,24 @@
 package lucas.malheiros.lostarkdaily.modelo;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Personagem {
 
+    @PrimaryKey(autoGenerate = true)
     private int id;
+    @NonNull
     private String nome;
+    @NonNull
     private Float ilvl;
+    @NonNull
     private boolean main;
+    @NonNull
     private String tier;
+    @NonNull
     private String classe;
-
-    public Personagem() {
-    }
 
     public Personagem(String nome, Float ilvl, boolean main, String tier, String classe){
         this.nome = nome;
@@ -20,6 +28,7 @@ public class Personagem {
         this.classe = classe;
     }
 
+    @NonNull
     public int getId() {
         return id;
     }
@@ -28,6 +37,7 @@ public class Personagem {
         this.id = id;
     }
 
+    @NonNull
     public String getNome(){
         return nome;
     }
@@ -36,6 +46,7 @@ public class Personagem {
         this.nome = nome;
     }
 
+    @NonNull
     public Float getIlvl() {
         return ilvl;
     }
@@ -44,7 +55,8 @@ public class Personagem {
         this.ilvl = ilvl;
     }
 
-    public boolean isMain() {
+    @NonNull
+    public boolean getMain() {
         return main;
     }
 
@@ -52,6 +64,7 @@ public class Personagem {
         this.main = main;
     }
 
+    @NonNull
     public String getTier() {
         return tier;
     }
@@ -60,6 +73,7 @@ public class Personagem {
         this.tier = tier;
     }
 
+    @NonNull
     public String getClasse() {
         return classe;
     }
