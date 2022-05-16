@@ -42,13 +42,18 @@ We would have the first data table being the characters and the activities carri
 * The Application must support two languages, English as standard and Brazilian Portuguese as optional.
 
 
-## Grade: 9.2/10
+## 1st Delivery Grade: 9.2/10
 ### Professor's comments:
 >Ao abrir o Menu de Contexto Flutuante e selecionar para editar um item, apenas abre para edição o primeiro elemento da listagem, e ao escolher excluir é apagado sempre o primeiro elemento da listagem.
 >
 >When opening the Floating Context Menu and selecting to edit an item, it opens only for the first element in the list, and when choosing the excluded element, the first element in the list is always excluded.
 
+## Updates
+* Currently upading project to include SQLite support using Room.
+* Future updates will include the creation of a second entity (class names) and a third (daily activities done);
+
 
 ### Knows problems/bugs
-* When opening the Floating Context Menu and selecting to edit an item, it opens only for the first element in the list, and when choosing the excluded element, the first element in the list is always excluded.
-* When creating a character, the class is not being displayed in the character list activity, instead it is only showing "TextField"
+* ~~When opening the Floating Context Menu and selecting to edit an item, it opens only for the first element in the list, and when choosing the excluded element, the first element in the list is always excluded.~~ Fixed
+* ~~When creating a character, the class is not being displayed in the character list activity, instead it is only showing "TextField"~~ Fixed
+* Sorting list is currently broken, new characters are currently being added to the end of the list and there is no way of changing order
