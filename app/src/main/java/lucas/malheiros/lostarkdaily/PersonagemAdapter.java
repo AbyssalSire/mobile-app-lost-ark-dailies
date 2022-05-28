@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import lucas.malheiros.lostarkdaily.modelo.Personagem;
+import lucas.malheiros.lostarkdaily.persistencia.PersonagensDatabase;
 
 public class PersonagemAdapter extends RecyclerView.Adapter<PersonagemAdapter.MyViewHolder> {
 
@@ -77,9 +78,13 @@ public class PersonagemAdapter extends RecyclerView.Adapter<PersonagemAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+
         Personagem personagem = personagems.get(i);
         myViewHolder.textViewNome.setText(personagem.getNome());
-        myViewHolder.textViewClasse.setText(personagem.getClasse());
+        PersonagensDatabase personagensDatabase = PersonagensDatabase.getDatabase(context);
+
+        myViewHolder.textViewClasse.setText((CharSequence) personagensDatabase.classeDePersonagensDAO().queryForId(personagem.getClasse()));
+        //myViewHolder.textViewClasse.setText(personagem.getClasse());
         myViewHolder.textViewIlvl.setText(String.valueOf(personagem.getIlvl()));
         myViewHolder.textViewTier.setText(personagem.getTier());
         myViewHolder.checkBoxEhMain.setChecked(personagem.getMain());

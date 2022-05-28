@@ -1,10 +1,12 @@
 package lucas.malheiros.lostarkdaily.modelo;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "personagem", foreignKeys = @ForeignKey(entity = ClassesDePersonagem.class, parentColumns = "id", childColumns = "classe"))
 public class Personagem {
 
     @PrimaryKey(autoGenerate = true)
@@ -17,10 +19,11 @@ public class Personagem {
     private boolean main;
     @NonNull
     private String tier;
-    @NonNull
-    private String classe;
 
-    public Personagem(String nome, Float ilvl, boolean main, String tier, String classe){
+    @NonNull @ColumnInfo(index = true)
+    private int classe;
+
+    public Personagem(String nome, Float ilvl, boolean main, String tier, int classe){
         this.nome = nome;
         this.ilvl = ilvl;
         this.main = main;
@@ -74,11 +77,11 @@ public class Personagem {
     }
 
     @NonNull
-    public String getClasse() {
+    public int getClasse() {
         return classe;
     }
 
-    public void setClasse(String classe) {
+    public void setClasse(int classe) {
         this.classe = classe;
     }
 }

@@ -1,7 +1,9 @@
 package lucas.malheiros.lostarkdaily;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +19,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import lucas.malheiros.lostarkdaily.modelo.ClassesDePersonagem;
 import lucas.malheiros.lostarkdaily.modelo.Personagem;
 import lucas.malheiros.lostarkdaily.persistencia.PersonagensDatabase;
 
@@ -37,10 +41,11 @@ public class CadastroActivity extends AppCompatActivity {
     public static final String EHMAIN = "EHMAIN";
     public static final String TIER = "TIER";
     public static final String CLASSE = "CLASSE";
-    public static final String ID      = "ID";
-    private int    modo;
+    public static final String ID = "ID";
+    private int modo;
 
     private Personagem personagem;
+    private List<ClassesDePersonagem> lista;
 
 
     public static void novoPersonagem(AppCompatActivity activity) {
@@ -79,11 +84,11 @@ public class CadastroActivity extends AppCompatActivity {
         radioGroupTier = findViewById(R.id.radioGroupTier);
         spinnerClasse = findViewById(R.id.spinnerClasse);
 
-        popularSpinner(lista);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
-
+        PersonagensDatabase personagensDatabase = PersonagensDatabase.getDatabase(this);
+        popularSpinner();
 
         if (bundle != null) {
 
@@ -91,19 +96,19 @@ public class CadastroActivity extends AppCompatActivity {
 
             if (modo == NOVO) {
                 setTitle("Cadastrar Personagem");
-                personagem = new Personagem("",-1f,false,"","");
+                personagem = new Personagem("", -1f, false, "", 1);
             } else if (modo == ALTERAR) {
                 setTitle("Alterar Personagem");
 
 
-                PersonagensDatabase personagensDatabase = PersonagensDatabase.getDatabase(this);
+                //PersonagensDatabase personagensDatabase = PersonagensDatabase.getDatabase(this);
 
                 personagem = personagensDatabase.personagemDAO().queryForNome(bundle.getString(NOME));
 
                 editTextNomePersonagem.setText(bundle.getString(NOME));
                 editTextIlvlPersonagem.setText(Float.toString(bundle.getFloat(ILVL)));
 
-                    checkBoxMain.setChecked(bundle.getBoolean(EHMAIN));
+                checkBoxMain.setChecked(bundle.getBoolean(EHMAIN));
 
                 switch (bundle.getString(TIER)) {
                     case "Tier 1":
@@ -121,12 +126,7 @@ public class CadastroActivity extends AppCompatActivity {
                         radioGroupTier.check(R.id.radioButtonT1);
                         break;
                 }
-
-                for (int i = 0; i < lista.size(); i++) {
-                    if (lista.get(i).equals(bundle.getString(CLASSE))) {
-                        spinnerClasse.setSelection(i);
-                    }
-                }
+                spinnerClasse.setSelection(bundle.getInt(CLASSE));
             }
         }
 
@@ -173,7 +173,7 @@ public class CadastroActivity extends AppCompatActivity {
         String nomePersonagem = editTextNomePersonagem.getText().toString();
         String mensagemMain = "";
         String tier = "";
-        String classe;
+        int classe;
 
         if (nomePersonagem == null || nomePersonagem.trim().isEmpty()) {
             Toast.makeText(this, R.string.erro_nome, Toast.LENGTH_LONG).show();
@@ -209,14 +209,14 @@ public class CadastroActivity extends AppCompatActivity {
 
         personagem.setMain(checkBoxMain.isChecked());
         personagem.setTier(tier);
-        personagem.setClasse((String) spinnerClasse.getSelectedItem());
+        personagem.setClasse(spinnerClasse.getSelectedItemPosition() + 1);
 
         PersonagensDatabase personagensDatabase = PersonagensDatabase.getDatabase(this);
-        if (modo==NOVO) {
+        if (modo == NOVO) {
 
             personagensDatabase.personagemDAO().insert(personagem);
 
-        } else if (modo == ALTERAR){
+        } else if (modo == ALTERAR) {
 
             personagensDatabase.personagemDAO().update(personagem);
         }
@@ -230,7 +230,7 @@ public class CadastroActivity extends AppCompatActivity {
         String nomePersonagem = personagemAlterado.getNome();
         String ilvlPersonagem = String.valueOf(personagemAlterado.getIlvl());
         String tier = personagemAlterado.getTier();
-        String classe = personagemAlterado.getClasse();
+        int classe = personagemAlterado.getClasse();
 
         personagem.setNome(nomePersonagem);
         personagem.setIlvl(Float.valueOf(ilvlPersonagem));
@@ -249,28 +249,28 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
 
-    private void popularSpinner(ArrayList<String> lista) {
+    private void popularSpinner() {
 
-        lista.add(getString(R.string.berserker));
-        lista.add(getString(R.string.paladin));
-        lista.add(getString(R.string.gunlancer));
-        lista.add(getString(R.string.glaivier));
-        lista.add(getString(R.string.striker));
-        lista.add(getString(R.string.wardancer));
-        lista.add(getString(R.string.scrapper));
-        lista.add(getString(R.string.soulfist));
-        lista.add(getString(R.string.gunslinger));
-        lista.add(getString(R.string.artillerist));
-        lista.add(getString(R.string.deadeye));
-        lista.add(getString(R.string.sharpshooter));
-        lista.add(getString(R.string.bard));
-        lista.add(getString(R.string.sorceress));
-        lista.add(getString(R.string.shadowhunter));
-        lista.add(getString(R.string.deathblade));
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                PersonagensDatabase personagensDatabase = PersonagensDatabase.getDatabase(CadastroActivity.this);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista);
+                lista = personagensDatabase.classeDePersonagensDAO().querryAllClasses();
 
-        spinnerClasse.setAdapter(adapter);
+                CadastroActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ArrayAdapter<ClassesDePersonagem> adapter = new ArrayAdapter<>(CadastroActivity.this, android.R.layout.simple_list_item_1, lista);
+
+                        spinnerClasse.setAdapter(adapter);
+
+                    }
+                });
+
+            }
+        });
+
     }
 
     @Override

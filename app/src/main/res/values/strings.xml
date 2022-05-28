@@ -74,5 +74,6 @@
     <string name="descricaoLogoUTF">UTFPR\'s logo</string>
     <string name="menu_alfabetico">Alphabetical order</string>
     <string name="menu_level">Order by item level</string>
+    <string name="classes">Classes</string>
 
 </resources>
