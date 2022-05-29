@@ -84,5 +84,9 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="cadastroDeClasses">Register new class</string>
+    <string name="hintClasse">Insert Class name here</string>
+    <string name="novaClasse">New class</string>
+    <string name="editClass">Change class</string>
 
 </resources>

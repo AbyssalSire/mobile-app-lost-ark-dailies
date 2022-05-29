@@ -11,12 +11,15 @@
         android:theme="@style/Theme.LostArkDaily">
         <activity
             android:name=".CadastroClasseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CadastroClasse"
-            android:exported="false"
+            android:exported="false" >
             android:label="@string/title_activity_cadastro_classe"
             android:theme="@style/Theme.LostArkDaily.NoActionBar" />
+            android:parentActivityName=".TelaClassesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".TelaPersonagensActivity" />
+        </activity>
+
         <activity
             android:name=".TelaClassesActivity"
             android:exported="false">

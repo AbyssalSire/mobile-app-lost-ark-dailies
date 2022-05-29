@@ -35,4 +35,11 @@
     <string name="menu_alfabetico">Ordem alfabética</string>
     <string name="menu_level">Ordernar por nível</string>
     <string name="classes">Classes</string>
+    <string name="cadastroDeClasses">Cadastrar nova classe</string>
+    <string name="hintClasse">Insira o nome da classe</string>
+    <string name="title_activity_cadastro_classe">Cadastrar classe</string>
+    <string name="next">Próximo</string>
+    <string name="previous">Enterior</string>
+    <string name="novaClasse">Nova classe</string>
+    <string name="editClass">Alterar classe</string>
 </resources>

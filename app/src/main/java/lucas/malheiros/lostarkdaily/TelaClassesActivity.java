@@ -31,6 +31,7 @@ public class TelaClassesActivity extends AppCompatActivity {
     private List<ClassesDePersonagem> lista_classes = new ArrayList<>();
 
     private ListView listViewClasses;
+    private int  posicaoSelecionada = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,11 +71,12 @@ public class TelaClassesActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.menuItemEditarClasse:
-                String posicaoS = String.valueOf(info.position);
-                Toast.makeText(this, posicaoS, Toast.LENGTH_SHORT).show();
+                posicaoSelecionada = info.position;
+                editarClasse(item, posicaoSelecionada);
+
                 return true;
             case R.id.menuItemExcluirClasse:
-                Toast.makeText(this, "Excluir", Toast.LENGTH_SHORT).show();
+                excluirClasse(posicaoSelecionada);
                 return true;
             default:
                 return super.onContextItemSelected(item);
@@ -90,22 +92,39 @@ public class TelaClassesActivity extends AppCompatActivity {
 
         ArrayAdapter<ClassesDePersonagem> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista_classes);
 
+        adapter.notifyDataSetChanged();
         listViewClasses.setAdapter(adapter);
 
     }
 
+    public void adicionarClasse(MenuItem menu) {
+        CadastroClasseActivity.novaClasse(this);
+    }
+
     private void editarClasse(MenuItem item, int posicaoSelecionada) {
+
+        CadastroClasseActivity.alterarClasse(this, posicaoSelecionada+1);
     }
 
     private void excluirClasse(int posicaoSelecionada) {
         PersonagensDatabase personagensDatabase = PersonagensDatabase.getDatabase(this);
-        personagensDatabase.classeDePersonagensDAO().delete(lista_classes.get(posicaoSelecionada));
+        personagensDatabase.classeDePersonagensDAO().delete(lista_classes.get(posicaoSelecionada+1));
         popularLista();
     }
 
-    public void adicionarClasse(MenuItem menu) {
-        //CadastroClasseActivity.novaClasse(this);
-    }
 
+    @Override
+    protected void onActivityResult(int requestCode,
+                                    int resultCode,
+                                    Intent data) {
+
+
+
+            super.onActivityResult(requestCode, resultCode, data);
+            if (resultCode == Activity.RESULT_OK) {
+                popularLista();
+            }
+
+    }
 
 }

@@ -6,4 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".CadastroClasseActivity">
 
+    <EditText
+        android:id="@+id/editTextNomeClasse"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/hintClasse"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
