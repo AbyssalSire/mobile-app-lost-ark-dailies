@@ -17,8 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import lucas.malheiros.lostarkdaily.modelo.Personagem;
@@ -113,6 +111,13 @@ public class TelaPersonagensActivity extends AppCompatActivity {
 
     public void sobre(MenuItem item) {
         Intent intent = new Intent(this, SobreActivity.class);
+
+        startActivity(intent);
+
+    }
+
+    public void classes(MenuItem item) {
+        Intent intent = new Intent(this, TelaClassesActivity.class);
 
         startActivity(intent);
 
