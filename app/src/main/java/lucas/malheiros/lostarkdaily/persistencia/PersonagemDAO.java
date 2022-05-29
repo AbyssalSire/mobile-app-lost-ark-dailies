@@ -36,4 +36,7 @@ public interface PersonagemDAO {
     @Query("SELECT * FROM personagem ORDER BY ilvl ASC")
     List<Personagem> queryAllItemLevel();
 
+    @Query("SELECT * from personagem where classe= :classe")
+    List<Personagem> queryForExisteComClasse(long classe);
+
 }

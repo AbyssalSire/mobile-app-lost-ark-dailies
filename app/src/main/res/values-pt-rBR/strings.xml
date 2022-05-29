@@ -34,4 +34,5 @@
     <string name="sobre">Sobre o desenvolvedor</string>
     <string name="menu_alfabetico">Ordem alfabética</string>
     <string name="menu_level">Ordernar por nível</string>
+    <string name="classes">Classes</string>
 </resources>

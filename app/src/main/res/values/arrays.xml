@@ -54,15 +54,22 @@
 
     <string-array name="classe_personagens">
         <item>@string/berserker</item>
-        <item>@string/artillerist</item>
-        <item>@string/shadowhunter</item>
-        <item>@string/deadeye</item>
-        <item>@string/sorceress</item>
-        <item>@string/bard</item>
+        <item>@string/paladin</item>
+        <item>@string/gunlancer</item>
+        <item>@string/glaivier</item>
         <item>@string/striker</item>
         <item>@string/wardancer</item>
-        <item>@string/glaivier</item>
+        <item>@string/scrapper</item>
         <item>@string/soulfist</item>
+        <item>@string/gunslinger</item>
+        <item>@string/artillerist</item>
+        <item>@string/deadeye</item>
+        <item>@string/sharpshooter</item>
+        <item>@string/bard</item>
+        <item>@string/sorceress</item>
+        <item>@string/shadowhunter</item>
+        <item>@string/deathblade</item>
+
     </string-array>
 
 

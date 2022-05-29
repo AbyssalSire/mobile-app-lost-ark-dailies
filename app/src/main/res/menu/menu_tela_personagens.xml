@@ -20,4 +20,8 @@
         android:id="@+id/menu_level"
         android:onClick="OrdenaNivel"
         android:title="@string/menu_level" />
+    <item
+        android:id="@+id/menuItemClasses"
+        android:onClick="classes"
+        android:title="@string/classes" />
 </menu>
