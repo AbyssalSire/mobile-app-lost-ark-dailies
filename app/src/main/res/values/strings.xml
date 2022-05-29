@@ -57,7 +57,7 @@
     <string name="nome_aluno">Author: Lucas Malheiros</string>
     <string name="utfpr">Technological Federal University of the Parana State</string>
     <string name="email_aluno" translatable="false">E-mail: lucmalheiros@gmail.com</string>
-    <string name="descricao_aplicativo">Controle de farm para personagens de Lost Ark. Adicione os dados de seus personagens e utilize o aplicativo para gerenciar quais atividades diárias e semanais foram completadas.</string>
+    <string name="descricao_aplicativo">Farm activities registry in Lost Ark. The game requires resource farming to improve the character\'s equipment, while activities with such resources have a maximum daily or weekly limit that each character can perform.</string>
     <string name="curso_aluno">Major: Software Engineering</string>
     <string name="listaPersonagens">Character list</string>
     <string name="main" translatable="false">Main</string>
