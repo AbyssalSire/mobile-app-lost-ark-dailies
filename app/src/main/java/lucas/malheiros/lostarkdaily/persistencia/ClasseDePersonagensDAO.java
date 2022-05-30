@@ -29,8 +29,8 @@ public interface ClasseDePersonagensDAO {
     @Query("Select id from classesDePersonagem WHERE nomeClasse= :nomeClasse ")
     Integer queryForNome(String nomeClasse);
 
-    @Query("SELECT * FROM classesDePersonagem WHERE id = :id")
-    ClassesDePersonagem queryForCharacterWithId(long id);
+    @Query("Select * from classesDePersonagem WHERE id= :id ORDER BY id ASC")
+    ClassesDePersonagem queryForClasseWithId(long id);
 
     @Query("Select * from classesDePersonagem ORDER BY id ASC")
     List<ClassesDePersonagem> querryAllClasses();

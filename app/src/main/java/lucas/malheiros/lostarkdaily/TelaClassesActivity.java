@@ -72,10 +72,12 @@ public class TelaClassesActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menuItemEditarClasse:
                 posicaoSelecionada = info.position;
+                //Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
                 editarClasse(item, posicaoSelecionada);
 
                 return true;
             case R.id.menuItemExcluirClasse:
+                posicaoSelecionada = info.position;
                 excluirClasse(posicaoSelecionada);
                 return true;
             default:
@@ -90,10 +92,10 @@ public class TelaClassesActivity extends AppCompatActivity {
         PersonagensDatabase personagensDatabase = PersonagensDatabase.getDatabase(this);
         lista_classes = personagensDatabase.classeDePersonagensDAO().querryAllClasses();
 
-        ArrayAdapter<ClassesDePersonagem> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista_classes);
-
-        adapter.notifyDataSetChanged();
+        ArrayAdapter<ClassesDePersonagem> adapter = new ArrayAdapter<>(TelaClassesActivity.this, android.R.layout.simple_list_item_1, lista_classes);
+        listViewClasses = findViewById(R.id.listViewClasses);
         listViewClasses.setAdapter(adapter);
+        //adapter.notifyDataSetChanged();
 
     }
 
@@ -103,12 +105,12 @@ public class TelaClassesActivity extends AppCompatActivity {
 
     private void editarClasse(MenuItem item, int posicaoSelecionada) {
 
-        CadastroClasseActivity.alterarClasse(this, posicaoSelecionada+1);
+        CadastroClasseActivity.alterarClasse(this, posicaoSelecionada);
     }
 
     private void excluirClasse(int posicaoSelecionada) {
         PersonagensDatabase personagensDatabase = PersonagensDatabase.getDatabase(this);
-        personagensDatabase.classeDePersonagensDAO().delete(lista_classes.get(posicaoSelecionada+1));
+        personagensDatabase.classeDePersonagensDAO().delete(lista_classes.get(posicaoSelecionada));
         popularLista();
     }
 

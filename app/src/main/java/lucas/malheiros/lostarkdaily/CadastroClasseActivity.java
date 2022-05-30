@@ -39,6 +39,7 @@ public class CadastroClasseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_classe);
         PersonagensDatabase personagensDatabase = PersonagensDatabase.getDatabase(this);
+        lista = personagensDatabase.classeDePersonagensDAO().querryAllClasses();
 
 
         ActionBar actionBar = getSupportActionBar();
@@ -59,7 +60,9 @@ public class CadastroClasseActivity extends AppCompatActivity {
         if (modo == NOVO) {
             setTitle(getString(R.string.novaClasse));
         } else {
-            classe = personagensDatabase.classeDePersonagensDAO().queryForCharacterWithId(bundle.getInt(IDCLASSE));
+
+
+            classe = lista.get(bundle.getInt(IDCLASSE));
             editTextNomeClasse.setText(classe.getNomeClasse());
             setTitle(getString(R.string.editClass));
         }
